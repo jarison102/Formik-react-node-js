@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { handleDownloadPdf } from './Mifuncion.js';
+import { handleOpenPdf } from './Funcionpdf.js';
 import axios from 'axios'
+const poema = {
+	title: "Tas",
+	poet: {
+	  name: "pepe"
+	},
+	content: "rifles"
+  };
+
 
 const Formulario = () => {
 	const [datos, setDatos] = useState([]);
@@ -543,6 +553,9 @@ const Formulario = () => {
 
 						
 						<button type="submit">Enviar</button>
+						{poema && <button type="button" onClick={() => handleDownloadPdf(poema)}>Descargar PDF</button>}
+						{poema && <button type="button" onClick={() => handleOpenPdf(poema)}>Ver PDF</button>}
+						
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
 						
 

@@ -71,7 +71,8 @@ body {
 	font-size: 12px;
 }
 
-.formulario button[type="submit"] {
+.formulario button[type="submit"],
+.formulario button[type="button"] {
 	display: block;
 	background: #0085FF;
 	font-weight: 600;
@@ -84,10 +85,11 @@ body {
 	color: #fff;
 	font-size: 16px;
 	transition: .3s ease all;
-	grid-column: span 4; /* Actualizado a 4 columnas */
+	grid-column: span 4;
 }
 
-.formulario button[type="submit"]:hover {
+.formulario button[type="submit"]:hover,
+.formulario button[type="button"]:hover {
 	background: #0051ff;
 }
 

@@ -11,7 +11,7 @@ app.use(cors())
 app.post('/register', (req, res) => {
   console.log(req.body)
   let errorGenerado = null;
-  db.registrar(req.body, (error, results) => {
+  db.registrar(req.body, (error, results) => {z
     if (error) errorGenerado = error;
     console.log('Datos registrados correctamente:', results);
   });
