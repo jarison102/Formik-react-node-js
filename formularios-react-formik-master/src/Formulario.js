@@ -3,13 +3,18 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { handleDownloadPdf } from './Mifuncion.js';
 import { handleOpenPdf } from './Funcionpdf.js';
 import axios from 'axios'
-const poema = {
-	title: "Tas",
+
+
+
+const poema = (text) => {
+	return{
+	title: text,
 	poet: {
 	  name: "pepe"
 	},
 	content: "rifles"
-  };
+  }
+};
 
 
 const Formulario = () => {
@@ -19,6 +24,34 @@ const Formulario = () => {
 	const [datosSubtipo2, setDatosSubtipo2] = useState([]);
 	const [datosEstrato, setDatosEstrato] = useState([]);
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+	
+	function GenerarPDF () {
+		const nombreProyecto = "El Nombre del Proyecto es: " + document.getElementById("Proyecto").value;
+		const fuente = "El Nombre de la Fuente es: " + document.getElementById("Fuente").value;
+		const codSigma = "El codigo de sigma es: " + document.getElementById("Cod_sigma").value;
+		const inmobiliaria = "El Nombre de la inmobiliaria es: " + document.getElementById("inmobiliaria").value;
+		const interiorExterior = "Es " + document.getElementById("Interior_Exterior").value;
+		const telefono1 = "El Telefono1 es: " + document.getElementById("Telefono1").value;
+		const telefono2 = "El Telefono2 es: " + document.getElementById("Telefono2").value;
+		const telefono3 = "El Telefono3 es: " + document.getElementById("Telefono3").value;
+		const areaM2 ="El Area es " +  document.getElementById("Area_M2").value;
+		const areaMezanine = "El Area_mezanine es: " + document.getElementById("Area_mezanine").value;
+		const areaTerrazaM2 = "El Area_terraza_M2 es: " + document.getElementById("Area_terraza_M2").value;
+		const numPiso = "El  numero de pisos son: " + document.getElementById("Num_piso").value;
+		const alcobas = "Las alcobas son:  " + document.getElementById("Alcobas").value;
+		const numGarajes = "El Numero de garajes son: " + document.getElementById("Num_garajes").value;
+		const valorPrecioM2 = "El valor es " + document.getElementById("Valor_Precio_m2").value;
+		const costoAdministracion = "El costo de la administracion es: " + document.getElementById("Costo_administracion").value;
+		const valorArriendo = "El valor del arriendo esta rondando en: " + document.getElementById("Valor_arriendo").value;
+		const antiguedad = "La antiguedad: " + document.getElementById("Antiguedad").value;
+	  
+		const contenidoPdf = poema(`${nombreProyecto}\n${fuente}\n${codSigma}\n${inmobiliaria}\n${interiorExterior}\n${telefono1}\n${telefono2}\n${telefono3}\n${areaM2}\n${areaMezanine}\n${areaTerrazaM2}\n${numPiso}\n${alcobas}\n${numGarajes}\n${valorPrecioM2}\n${costoAdministracion}\n${valorArriendo}\n${antiguedad}`);
+	  
+		handleDownloadPdf(contenidoPdf, `${nombreProyecto}.pdf`);
+	  }
+	  
+	  
+	
 	useEffect(() => {
 
 		axios.get('http://localhost:3001/mostrar-datos').then((resp) => {
@@ -553,7 +586,8 @@ const Formulario = () => {
 
 						
 						<button type="submit">Enviar</button>
-						{poema && <button type="button" onClick={() => handleDownloadPdf(poema)}>Descargar PDF</button>}
+
+						{<button type="button" onClick={() => GenerarPDF()}>Descargar PDF</button>}
 						{poema && <button type="button" onClick={() => handleOpenPdf(poema)}>Ver PDF</button>}
 						
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
