@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
+
 * {
 	padding: 0px;
 	margin: 0;
@@ -117,6 +118,58 @@ body {
 	background: #fff;
 }
 
+  .boton-seleccionar {
+	display: block;
+	background: #0085FF;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	grid-column: span 2; /* Opcional, ajusta la anchura del botón */
+	margin-top: 10px; /* Opcional, agrega un margen superior al botón */
+}
+
+.boton-seleccionar:hover {
+	background: #0051ff;
+}
+
+.texto-rojo {
+	color: red;
+  }
+  .icono-basura {
+	cursor: pointer;
+	color: red;
+  }
+  .icono-basura:hover {
+	color: darkred;
+  }
+
+  .imagen-pdf {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	/* Otros estilos deseados */
+  }
+  
+  .contenedor-imagenes {
+	display: flex;
+	justify-content: space-between;
+  }
+  
+  .contenedor-imagenes img {
+	width: 45%;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	/* Otros estilos deseados */
+  }
+  
 @media screen and (max-width: 768px) {
 	.formulario {
 		display: block;
